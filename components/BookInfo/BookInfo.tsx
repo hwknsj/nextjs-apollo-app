@@ -1,5 +1,5 @@
-import { useQuery, useMutation } from "@apollo/react-hooks";
-import { gql } from "apollo-boost";
+import { useQuery, useMutation } from '@apollo/react-hooks'
+import { gql } from 'apollo-boost'
 
 const GET_BOOK_DETAILS = gql`
   query {
@@ -8,7 +8,7 @@ const GET_BOOK_DETAILS = gql`
       author
     }
   }
-`;
+`
 
 const SET_BOOK_DETAILS = gql`
   mutation UpdateBook($name: String!, $author: String!) {
@@ -17,33 +17,35 @@ const SET_BOOK_DETAILS = gql`
       author
     }
   }
-`;
+`
 
 const BookInfo = () => {
-  const { loading, error, data } = useQuery(GET_BOOK_DETAILS);
+  const { loading, error, data } = useQuery(GET_BOOK_DETAILS)
 
   const updateCache = (cache, { data: { updateBook } }) => {
     const existingBook = cache.readQuery({
-      query: GET_BOOK_DETAILS,
-    });
+      query: GET_BOOK_DETAILS
+    })
 
     cache.writeQuery({
       query: GET_BOOK_DETAILS,
-      data: { book: updateBook },
-    });
-  };
+      data: { book: updateBook }
+    })
+  }
 
-  const [updateBook] = useMutation(SET_BOOK_DETAILS, { update: updateCache });
+  const [
+    updateBook
+  ] = useMutation(SET_BOOK_DETAILS, { update: updateCache })
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>Error :(</p>
 
   const updateBookDetails = () => {
-    console.log("----->>> Update Book Details");
+    console.log('----->>> Update Book Details')
     updateBook({
-      variables: { name: "A Spicy Sausage", author: "Andrew Grunfeld" },
-    });
-  };
+      variables: { name: 'A Spicy Sausage', author: 'Andrew Grunfeld' }
+    })
+  }
 
   return (
     <div>
@@ -52,7 +54,7 @@ const BookInfo = () => {
       </p>
       <button onClick={updateBookDetails}>Update Book</button>
     </div>
-  );
-};
+  )
+}
 
-export default BookInfo;
+export default BookInfo

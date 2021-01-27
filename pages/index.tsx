@@ -1,13 +1,15 @@
-import fetch from "isomorphic-unfetch";
-import { ApolloProvider } from "@apollo/react-hooks";
-import ApolloClient, { gql } from "apollo-boost";
+import { endpoint, prodEndpoint } from '../config'
+import { ApolloProvider } from '@apollo/react-hooks'
+import ApolloClient from 'apollo-boost'
 
-import { BookInfo, AuthorInfo } from "../components";
+import { BookInfo, AuthorInfo } from '../components'
+
+const uri = process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint
 
 const Home = () => {
   const client = new ApolloClient({
-    uri: "http://localhost:3000/api/graphql-data",
-  });
+    uri
+  })
 
   return (
     <ApolloProvider client={client}>
@@ -17,7 +19,7 @@ const Home = () => {
         <AuthorInfo />
       </div>
     </ApolloProvider>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

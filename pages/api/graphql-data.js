@@ -1,9 +1,9 @@
-import { ApolloServer, gql } from "apollo-server-micro";
+import { ApolloServer, gql } from 'apollo-server-micro'
 
 let book = {
-  name: "The Large Hungarian Sausage",
-  author: "Ben Grunfeld",
-};
+  name: 'The Large Hungarian Sausage',
+  author: 'Ben Grunfeld'
+}
 
 const typeDefs = gql`
   type Book {
@@ -18,30 +18,30 @@ const typeDefs = gql`
   type Mutation {
     updateBook(name: String!, author: String!): Book
   }
-`;
+`
 
 const resolvers = {
   Query: {
-    book: () => book,
+    book: () => book
   },
 
   Mutation: {
     updateBook: (root, args) => {
-      book.name = args.name;
-      book.author = args.author;
-      return book;
-    },
-  },
-};
+      book.name = args.name
+      book.author = args.author
+      return book
+    }
+  }
+}
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({ typeDefs, resolvers })
 
-const handler = server.createHandler({ path: "/api/graphql-data" });
+const handler = server.createHandler({ path: '/api/graphql-data' })
 
 export const config = {
   api: {
-    bodyParser: false,
-  },
-};
+    bodyParser: false
+  }
+}
 
-export default handler;
+export default handler
