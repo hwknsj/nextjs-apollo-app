@@ -1,6 +1,5 @@
 import { endpoint, prodEndpoint } from '../config'
-import { ApolloProvider } from '@apollo/react-hooks'
-import ApolloClient from 'apollo-boost'
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 
 import { BookInfo, AuthorInfo } from '../components'
 
@@ -8,7 +7,8 @@ const uri = process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint
 
 const Home = () => {
   const client = new ApolloClient({
-    uri
+    uri,
+    cache: new InMemoryCache()
   })
 
   return (

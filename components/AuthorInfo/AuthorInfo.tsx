@@ -1,5 +1,4 @@
-import { useQuery, useMutation } from '@apollo/react-hooks'
-import { gql } from 'apollo-boost'
+import { useQuery, gql } from '@apollo/client'
 
 const GET_BOOK_DETAILS = gql`
   query {
