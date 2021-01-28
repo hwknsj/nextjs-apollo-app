@@ -1,6 +1,13 @@
 {
   "name": "nextjs-apollo-app",
-  "version": "0.1.0",
+  "description": "next.js example app utilizing apollo and graphql. Forked from a medium.com article by Ben Grunfeld (https://medium.com/@binyamin), updated for Apollo v3",
+  "author": "joél <joel@joel.fm> (https://joel.fm/)",
+  "contributors": [
+    { "name": "Ben Grunfeld", "url": "https://bengrunfeld.dev/" }
+  ],
+  "repository": { "type": "git", "url": "https://github.com/hwknsj/nextjs-apollo-app.git" },
+  "homepage": "https://github.com/hwknsj/nextjs-apollo-app",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,8 +15,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@apollo/react-hooks": "^3.1.5",
-    "apollo-boost": "^0.4.9",
+    "@apollo/client": "^3.3.7",
     "apollo-server-micro": "^2.19.0",
     "graphql": "^15.4.0",
     "isomorphic-unfetch": "^3.1.0",
